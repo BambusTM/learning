@@ -15,7 +15,7 @@ geocoding_api_base_url = "https://api.geoapify.com/v1/geocode/search?text="
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 base_url = 'https://www.local.ch'
 url = 'https://www.local.ch/en/s/Restaurant%20Bern?rid=62b607&sorting=alphanum&page=1'
-pages = 32
+pages = 1
 restaurant_list = []
 
 def find_restaurants(url, pages):
