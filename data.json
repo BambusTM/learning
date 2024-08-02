@@ -1,0 +1,166 @@
+[
+    {
+        "name": "beans & nuts",
+        "address": "Herrengasse 10, 3011 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Becanto Coffee & Brunch",
+        "address": "Rütlistrasse 2, 3014 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Beck Glatz Confiseur",
+        "address": "Hirschengraben 6, 3011 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Bel Lago",
+        "address": "Kirchrain 11, 2572 Sutz",
+        "rating": "4.5 (14)",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "BEO-Funpark GmbH",
+        "address": "Auriedstrasse 28, 3178 Bösingen",
+        "rating": "4.7 (15)",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Berggasthaus Staubern",
+        "address": "Frümsnerbergstrasse, 9467 Rute",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Berner Molkerei",
+        "address": "Zentweg 17C, 3006 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Berner Pizza-Huus GmbH",
+        "address": "Scheibenstrasse 45, 3014 Bern",
+        "rating": "4.6 (8)",
+        "lat": null,
+        "lon": null,
+        "reviews": [
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Sehr gut",
+                "comment_content": "Die Bedienung ist sehr gut und schnell. Richtig leckeres Essen und äusserst freundliche Mitarbeiter.",
+                "comment_date": "18.01.2019"
+            },
+            {
+                "comment_rating": 2.0,
+                "comment_title": "Sehr schlechte Mitarbeiter/Service",
+                "comment_content": "Der richtig schlechte Service verdirbt den Appetit. Extrem genervte Mitarbeiter, unaufmerksam und nicht freundlich. Finde es schade für die im Grunde super Lage und das gemütliche Lokal.",
+                "comment_date": "23.08.2018"
+            }
+        ]
+    },
+    {
+        "name": "Bigote Verde Bern",
+        "address": "Laupenstrasse 57, 3008 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Bindella Vinotheka",
+        "address": "Kornhausplatz 18, 3011 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Bingo Bongo Burger",
+        "address": "Münstergasse 39, 3011 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Bistro Breiten",
+        "address": "Kyburgstrasse 12, 3013 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Bistro City GmbH",
+        "address": "Stauffacherstrasse 72, 3014 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Bistro Mitti",
+        "address": "Gesellschaftsstrasse 2, 3012 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Bistro Z Ritz Gädi",
+        "address": "Fahrhubelweg 5, 3123 Belp",
+        "rating": "4.0 (5)",
+        "lat": null,
+        "lon": null,
+        "reviews": [
+            {
+                "comment_rating": 3.0,
+                "comment_title": "Gutes Snack Bistro",
+                "comment_content": "Top (Thon) Sandwiches. Gemütliche Terrasse mit viel Beobachtungspotenzial. Minuspunkt: Seit Jahren ist der grüne Salat immer Eisbergsalat :-(",
+                "comment_date": "27.09.2019"
+            }
+        ]
+    },
+    {
+        "name": "Black Coffee",
+        "address": "Schlossstrasse 129, 3008 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Bonne Maman Bern",
+        "address": "Bubenbergplatz 15, 3011 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    },
+    {
+        "name": "Boomerang's GmbH",
+        "address": "Sternengässchen 5, 3011 Bern",
+        "rating": "null",
+        "lat": null,
+        "lon": null,
+        "reviews": []
+    }
+]

@@ -1,14 +1,20 @@
 import json
 import os
-from dotenv import load_dotenv, dotenv_values 
+from dotenv import load_dotenv
 import re
 from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 from requests.structures import CaseInsensitiveDict
 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 load_dotenv() 
 
+driver = webdriver.Chrome()
 geocoding_api_key = os.getenv("API_KEY")
 geocoding_api_base_url = "https://api.geoapify.com/v1/geocode/search?text="
 
@@ -20,7 +26,7 @@ restaurant_list = []
 
 def find_restaurants(url, pages):
     for p in range(pages):
-        page_url = url[:-1] + str(p + 1)
+        page_url = url[:-1] + str(p + 3)
         print(f"##### PAGE {p} #####")
         print("Visiting: ", page_url, "...")
         page = requests.get(page_url, headers = headers)
@@ -42,13 +48,37 @@ def find_restaurants(url, pages):
 
                     a_element = element.find("a", class_="ListElement_link__LabW8")
                     restaurant_page_url = a_element.get('href')
-                    print("Checking for comments at: ", restaurant_page_url, "...")
-                    new_page = requests.get(base_url + restaurant_page_url, headers = headers)
-                    new_soup = BeautifulSoup(new_page.content, "html.parser")
-                    detailed_results = new_soup.find(id="page-content")
-                    comment_wrapper = detailed_results.find_all("article", class_="Reviews_review__LyHOV")
+                    print("Checking for comments at:", restaurant_page_url, "...")
 
-                    for comment in comment_wrapper:
+                    driver.get(base_url + restaurant_page_url)
+                    try:
+                        WebDriverWait(driver, 5).until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "button.detail_showAllCommentsBtn__gpjn_.l--btn.l--btn--tertiary"))
+                        )
+                        show_more_button = WebDriverWait(driver, 5).until(
+                        EC.visibility_of_element_located((By.CSS_SELECTOR, "button.detail_showAllCommentsBtn__gpjn_.l--btn.l--btn--tertiary"))
+                        )
+                        print("button found")
+                    except:
+                        show_more_button = None
+                        print("no button")
+
+                    if show_more_button:
+                        driver.execute_script("arguments[0].click();", show_more_button)
+
+                        new_soup = BeautifulSoup(driver.page_source, "html.parser")
+                        detailed_results = new_soup.find(id="page-content")
+                        popup_div = detailed_results.find("div", class_="l--modal-container-body")
+                        WebDriverWait(driver, 10)
+
+                        comment_articles = popup_div.find_all("article")
+                    else: 
+                        new_soup = BeautifulSoup(driver.page_source, "html.parser")
+                        detailed_results = new_soup.find(id="page-content")
+                        comment_articles = detailed_results.find_all("article", class_="Reviews_review__LyHOV")
+
+
+                    for comment in comment_articles:
                         comment_item = []
                         comment_rating = comment.find("span", class_="RatingText_textAverage__eWIer undefined")
                         comment_title = comment.find("h3")
@@ -95,16 +125,16 @@ def formate_date(input_str):
     return input_str
 
 def get_coordinates(address):
-    address = address.replace(" ", '%20')
-    request_url = f"{geocoding_api_base_url}{address}&apiKey={geocoding_api_key}"
-    headers = CaseInsensitiveDict()
-    headers["Accept"] = "application/json"
-    resp = requests.get(request_url, headers = headers)
-    print("API-STATUS: ", resp.status_code)
-    if resp.status_code == 200:
-        resp_json = resp.json()
-        if resp_json['features']:
-            return resp_json['features'][0]['properties']['lat'], resp_json['features'][0]['properties']['lon']
+    #address = address.replace(" ", '%20')
+    #request_url = f"{geocoding_api_base_url}{address}&apiKey={geocoding_api_key}"
+    #headers = CaseInsensitiveDict()
+    #headers["Accept"] = "application/json"
+    #resp = requests.get(request_url, headers = headers)
+    #print("API-STATUS: ", resp.status_code)
+    #if resp.status_code == 200:
+    #    resp_json = resp.json()
+    #    if resp_json['features']:
+    #        return resp_json['features'][0]['properties']['lat'], resp_json['features'][0]['properties']['lon']
     return None, None
 
 def write_json(item_list):
