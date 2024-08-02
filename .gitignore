@@ -1,0 +1,8 @@
+DS.Store
+
+myenv/
+stuff/
+
+.env
+test.py
+*_old.json
