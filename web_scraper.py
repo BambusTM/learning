@@ -1,11 +1,15 @@
 import json
+import os
+from dotenv import load_dotenv, dotenv_values 
 import re
 from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 from requests.structures import CaseInsensitiveDict
 
-geocoding_api_key = "12f03af7dc0948b9b5e21ac5306c0797"
+load_dotenv() 
+
+geocoding_api_key = os.getenv("API_KEY")
 geocoding_api_base_url = "https://api.geoapify.com/v1/geocode/search?text="
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
