@@ -95,7 +95,7 @@ def main():
     data = read_json()
     tokens = tokenize(data)
     write_json(tokens, 'review_tokens.json', "token", "stem")
-    word_stem(tokens)
+    #word_stem(tokens)
     word_lemma(tokens)
 
 if __name__ == "__main__":
