@@ -1,4 +1,5 @@
 from nltk.stem import SnowballStemmer
+from nltk.stem import WordNetLemmatizer
 import json
 import nltk
 from nltk.tokenize import word_tokenize
@@ -47,6 +48,18 @@ def word_stem(tokens):
 
     write_json(stemmed_list, 'word_stem.json', "word", "stem")
 
+def word_lemma(tokens):
+    lemmatizer = WordNetLemmatizer()
+    lemmatized_list = []
+
+    for word_list in tokens:
+        if word_list:
+            word = word_list[0]
+            lemmatized_word = lemmatizer.lemmatize(word)
+            lemmatized_list.append([word, lemmatized_word])
+
+    write_json(lemmatized_list, 'word_lemma.json', "word", "lemma")
+
 def remove_stop_words(input):
     stop_words_de = set(stopwords.words('german'))
     stop_words_fr = set(stopwords.words('french'))
@@ -83,6 +96,7 @@ def main():
     tokens = tokenize(data)
     write_json(tokens, 'review_tokens.json', "token", "stem")
     word_stem(tokens)
+    word_lemma(tokens)
 
 if __name__ == "__main__":
     main()
