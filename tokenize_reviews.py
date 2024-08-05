@@ -1,9 +1,9 @@
 import json
 import nltk
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
 from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+import string
 
 token_list = []
 
@@ -13,6 +13,10 @@ def read_json():
     return data
 
 def tokenize(data):
+    nltk.download('punkt')
+    nltk.download('wordnet')
+    nltk.download('omw-1.4')
+
     for item in data:
         for review in item.get('reviews'):
             comment_title: str = review.get('comment_title')
@@ -21,13 +25,29 @@ def tokenize(data):
             title_tokens = word_tokenize(comment_title)
             comment_tokens = word_tokenize(comment_content)
 
+            stop_title_tokens = remove_stop_words(title_tokens)
+            stop_title_tokens = remove_stop_words(comment_tokens)
+
             review_item = []
-            review_item.append(title_tokens)
-            review_item.append(comment_tokens)
+            review_item.append(stop_title_tokens)
+            review_item.append(stop_title_tokens)
 
             token_list.append(review_item)
 
     return token_list
+
+def remove_stop_words(word_tokens):
+    nltk.download('stopwords')
+    
+    stop_words_de = set(stopwords.words('german'))
+    stop_words_fr = set(stopwords.words('french'))
+    stop_words_en = set(stopwords.words('english'))
+    stop_words = stop_words_de.union(stop_words_fr).union(stop_words_en)
+    punctuation = set(string.punctuation)
+    
+    filtered = [w for w in word_tokens if w.lower() not in stop_words and w not in punctuation]
+
+    return filtered
 
 def write_json(input):
     formatted_list = [
@@ -44,7 +64,6 @@ def main():
     data = read_json()
     tokens = tokenize(data)
     write_json(tokens)
-    print(tokens)
 
 if __name__ == "__main__":
     main()
