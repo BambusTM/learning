@@ -16,7 +16,7 @@ marker_data = []
 locations = []
 
 def read_json():
-    with open('data.json') as file:
+    with open('two_review_data_old.json') as file:
         data = json.load(file)
     return data
 

@@ -64,40 +64,44 @@ def find_restaurants(url, pages):
                         print("no button")
 
                     if show_more_button:
+                        print("More comments available")
                         driver.execute_script("arguments[0].click();", show_more_button)
 
                         new_soup = BeautifulSoup(driver.page_source, "html.parser")
                         detailed_results = new_soup.find(id="page-content")
-                        popup_div = detailed_results.find("div", class_="l--modal-container-body")
-                        WebDriverWait(driver, 10)
-
-                        comment_articles = popup_div.find_all("article")
+                        popup_div = detailed_results.find("div", class_="l--modal-container l--modal-container--sm")
+                        WebDriverWait(driver, 1)
+                        comment_articles = None
+                        if popup_div:
+                            inner_popup_div = popup_div.find("div", class_="l--modal-container-body")
+                            
+                            comment_articles = inner_popup_div.find_all("article", class_="Reviews_review__LyHOV")
+                            print(comment_articles)
                     else: 
                         new_soup = BeautifulSoup(driver.page_source, "html.parser")
                         detailed_results = new_soup.find(id="page-content")
                         comment_articles = detailed_results.find_all("article", class_="Reviews_review__LyHOV")
+                    if comment_articles:
+                        for comment in comment_articles:
+                            comment_item = []
+                            comment_rating = comment.find("span", class_="RatingText_textAverage__eWIer undefined")
+                            comment_title = comment.find("h3")
+                            paragraphs = comment.find_all("p")
 
+                            for p in paragraphs:
+                                if not p.get('class'):
+                                    comment_content = p
 
-                    for comment in comment_articles:
-                        comment_item = []
-                        comment_rating = comment.find("span", class_="RatingText_textAverage__eWIer undefined")
-                        comment_title = comment.find("h3")
-                        paragraphs = comment.find_all("p")
+                            comment_date = comment.find("span", class_="Reviews_dateAndAuthor__tnH7_")
 
-                        for p in paragraphs:
-                            if not p.get('class'):
-                                comment_content = p
+                            if not any(comment_title.text.strip() in s for s in review_list):
+                                comment_item.append(float(re.sub(r'[^\d.]', '', comment_rating.text.strip())))
+                                comment_item.append(comment_title.text.strip())
+                                comment_item.append(comment_content.text.strip())
+                                comment_item.append(formate_date(comment_date.text.strip()))
 
-                        comment_date = comment.find("span", class_="Reviews_dateAndAuthor__tnH7_")
-
-                        if not any(comment_title.text.strip() in s for s in review_list):
-                            comment_item.append(float(re.sub(r'[^\d.]', '', comment_rating.text.strip())))
-                            comment_item.append(comment_title.text.strip())
-                            comment_item.append(comment_content.text.strip())
-                            comment_item.append(formate_date(comment_date.text.strip()))
-
-                            review_list.append(comment_item)
-                
+                                review_list.append(comment_item)
+                    
                 rating_text = rating_element.text.strip().replace('\u00a0/\u00a05', '') if rating_element else "null"
 
                 if title_element:
