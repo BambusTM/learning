@@ -13,7 +13,7 @@ marker_data = []
 locations = []
 
 def read_json():
-    with open('data.json') as file:
+    with open('jsons/data.json') as file:
         data = json.load(file)
     return data
 

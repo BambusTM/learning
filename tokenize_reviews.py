@@ -11,7 +11,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 def read_json():
-    with open('data.json') as file:
+    with open('jsons/data.json') as file:
         data = json.load(file)
     return data
 
@@ -77,7 +77,7 @@ def word_stem(data):
             "comment_content": stemmed_content
         })
 
-    write_json(stemmed_reviews, 'word_stem.json')
+    write_json(stemmed_reviews, 'jsons/word_stem.json')
 
 def word_lemma(data):
     lemmatizer = WordNetLemmatizer()
@@ -95,12 +95,12 @@ def word_lemma(data):
             "comment_content": lemmatized_content
         })
 
-    write_json(lemmatized_reviews, 'word_lemma.json')
+    write_json(lemmatized_reviews, 'jsons/word_lemma.json')
 
 def main():
     data = read_json()
     tokenized_reviews = tokenize(data)
-    write_json(tokenized_reviews, 'review_tokens.json')
+    write_json(tokenized_reviews, 'jsons/review_tokens.json')
     word_stem(tokenized_reviews)
     word_lemma(tokenized_reviews)
 
