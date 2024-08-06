@@ -3,6 +3,7 @@ import math
 from collections import Counter
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 positive_word_occurence = Counter()
 neutral_word_occurence = Counter()
@@ -31,12 +32,12 @@ def classify_review(rating):
         return None
 
 def count_words(word_list):
-    return Counter(word_list)
+    normalized_words = [word.lower() for word in word_list]
+    return Counter(normalized_words)
 
 def main():
     data = read_json()
     for item in data:
-        print()
         restaurant_name = item.get('restaurant_name', "")
         restaurant_rating = item.get('restaurant_rating', "")
 
@@ -62,26 +63,51 @@ def main():
                 negative_word_occurence.update(title_word_count)
                 negative_word_occurence.update(content_word_count)
     
+    def top_words(counter, n = 25):
+        if not isinstance(counter, Counter):
+            counter = Counter(counter)
+        return dict(counter.most_common(n))
+
     positive_word_filtered = {word: count for word, count in positive_word_occurence.items() if count > 5}
     neutral_word_filtered = {word: count for word, count in neutral_word_occurence.items() if count > 5}
     negative_word_filtered = {word: count for word, count in negative_word_occurence.items() if count > 5}
 
-    data = []
-    for word, count in positive_word_filtered.items():
-        data.append([word, count, 'Positive'])
-    for word, count in neutral_word_filtered.items():
-        data.append([word, count, 'Neutral'])
-    for word, count in negative_word_filtered.items():
-        data.append([word, count, 'Negative'])
+    total_positive = sum(positive_word_filtered.values())
+    total_negative = sum(negative_word_filtered.values())
+    total_neutral = sum(neutral_word_filtered.values())
 
-    import pandas as pd
+    def normalize(word_count, total_count):
+        return {word: count / total_count for word, count in word_count.items()}
+
+    normalized_positive = normalize(positive_word_filtered, total_positive)
+    normalized_negative = normalize(negative_word_filtered, total_negative)
+    normalized_neutral = normalize(neutral_word_filtered, total_neutral)
+
+    top_positive_words = top_words(normalized_positive)
+    top_negative_words = top_words(normalized_negative)
+    top_neutral_words = top_words(normalized_neutral)
+
+    data = []
+    for word, count in top_positive_words.items():
+        data.append([word, count, 'Positive'])
+    for word, count in top_negative_words.items():
+        data.append([word, count, 'Negative'])
+    for word, count in top_neutral_words.items():
+        data.append([word, count, 'Neutral'])
+
     df = pd.DataFrame(data, columns=['Word', 'Count', 'Classification'])
 
     plt.figure(figsize=(12, 8))
     sns.barplot(x='Word', y='Count', hue='Classification', data=df)
     plt.xticks(rotation=90)
-    plt.title('Word Occurrences by Classification')
+    plt.title('Top Word Occurrences by Classification')
     plt.show()
+
+    pos_to_neg = sum(top_positive_words.values()) / sum(top_negative_words.values()) if top_negative_words else float('inf')
+    neg_to_pos = sum(top_negative_words.values()) / sum(top_positive_words.values()) if top_positive_words else float('inf')
+
+    print(f"Positive to Negative Ratio: {pos_to_neg:.2f}")
+    print(f"Negative to Positive Ratio: {neg_to_pos:.2f}")
 
 if __name__ == "__main__":
     main()
