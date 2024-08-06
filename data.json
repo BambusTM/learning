@@ -1,0 +1,292 @@
+[
+    {
+        "name": "beans & nuts",
+        "address": "Herrengasse 10, 3011 Bern",
+        "rating": "null",
+        "lat": 46.9470795,
+        "lon": 7.4500696,
+        "reviews": []
+    },
+    {
+        "name": "Becanto Coffee & Brunch",
+        "address": "Rütlistrasse 2, 3014 Bern",
+        "rating": "null",
+        "lat": 46.9588494,
+        "lon": 7.4571651,
+        "reviews": []
+    },
+    {
+        "name": "Beck Glatz Confiseur",
+        "address": "Hirschengraben 6, 3011 Bern",
+        "rating": "null",
+        "lat": 46.9466984,
+        "lon": 7.4375208,
+        "reviews": []
+    },
+    {
+        "name": "Mittagessen",
+        "address": "Kirchrain 11, 2572 Sutz",
+        "rating": "4.5 (14)",
+        "lat": 47.10735835,
+        "lon": 7.218403439122967,
+        "reviews": [
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Silvesterparty",
+                "comment_content": "War ein sehr schönes Fest. Super essen wenn auch fast etwas Zuviel.\r\nBesondere Lob an das Personal. Immer sehr nett und flott unterwegs.\r\nSchade das jetzt Winter Pause ist. \r\nFreue mich aber schon auf die Sommerferien.\r\nGruss Ralf",
+                "comment_date": "01.01.2023"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Schöner Abend",
+                "comment_content": "Die Stimmung im Zelt ist wirklich schön. Der Glühwein ist der beste, den ich in den letzten Jahren getrunken habe. Das Fondue hat sehr gut geschmeckt und die Bedienung war sehr aufmerksam und sympathisch. Alles in allem war es ein sehr schöner Abend. Ein herzliches Dankeschön dem Bel Lago Team.",
+                "comment_date": "27.11.2022"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Fondueessen im Zelt",
+                "comment_content": "Einsame Spitze! Sehr herzliche Bedienung, top Lokalitäten am wunderschönen Bielersee und herrliches Fondue! Herzlichen Dank! Liebe Grüsse! Eure Fondue-Geniesser :-)",
+                "comment_date": "04.12.2019"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Mittagessen",
+                "comment_content": "Die Speisekarte ist recht umfangreich. Die Speisen sind gut und es geht recht schnell. Freundliches Personal.",
+                "comment_date": "27.04.2018"
+            }
+        ]
+    },
+    {
+        "name": "BEO-Funpark GmbH",
+        "address": "Auriedstrasse 28, 3178 Bösingen",
+        "rating": "4.7 (15)",
+        "lat": 46.9019423,
+        "lon": 7.2301762,
+        "reviews": []
+    },
+    {
+        "name": "Berggasthaus Staubern",
+        "address": "Frümsnerbergstrasse, 9467 Rute",
+        "rating": "null",
+        "lat": 37.324516,
+        "lon": -4.369492,
+        "reviews": []
+    },
+    {
+        "name": "Berner Molkerei",
+        "address": "Zentweg 17C, 3006 Bern",
+        "rating": "null",
+        "lat": 46.957193,
+        "lon": 7.474456,
+        "reviews": []
+    },
+    {
+        "name": "Berner Pizza-Huus GmbH",
+        "address": "Scheibenstrasse 45, 3014 Bern",
+        "rating": "4.6 (8)",
+        "lat": 46.9627102,
+        "lon": 7.4519027,
+        "reviews": []
+    },
+    {
+        "name": "Bigote Verde Bern",
+        "address": "Laupenstrasse 57, 3008 Bern",
+        "rating": "null",
+        "lat": 46.9478379,
+        "lon": 7.4290846,
+        "reviews": []
+    },
+    {
+        "name": "Bindella Vinotheka",
+        "address": "Kornhausplatz 18, 3011 Bern",
+        "rating": "null",
+        "lat": 46.9488473,
+        "lon": 7.4471129,
+        "reviews": []
+    },
+    {
+        "name": "Bingo Bongo Burger",
+        "address": "Münstergasse 39, 3011 Bern",
+        "rating": "null",
+        "lat": 46.947422,
+        "lon": 7.4501448,
+        "reviews": []
+    },
+    {
+        "name": "Bistro Breiten",
+        "address": "Kyburgstrasse 12, 3013 Bern",
+        "rating": "null",
+        "lat": 46.9567936,
+        "lon": 7.4485457,
+        "reviews": []
+    },
+    {
+        "name": "Bistro Mitti",
+        "address": "Gesellschaftsstrasse 2, 3012 Bern",
+        "rating": "null",
+        "lat": 46.951792,
+        "lon": 7.4382108,
+        "reviews": []
+    },
+    {
+        "name": "Bistro Z Ritz Gädi",
+        "address": "Fahrhubelweg 5, 3123 Belp",
+        "rating": "4.0 (5)",
+        "lat": 46.8893209,
+        "lon": 7.5231616931370775,
+        "reviews": []
+    },
+    {
+        "name": "Black Coffee",
+        "address": "Schlossstrasse 129, 3008 Bern",
+        "rating": "null",
+        "lat": 46.9436655,
+        "lon": 7.4103612,
+        "reviews": []
+    },
+    {
+        "name": "Bonne Maman Bern",
+        "address": "Bubenbergplatz 15, 3011 Bern",
+        "rating": "null",
+        "lat": 46.9471823,
+        "lon": 7.4391162,
+        "reviews": []
+    },
+    {
+        "name": "Boomerang's GmbH",
+        "address": "Sternengässchen 5, 3011 Bern",
+        "rating": "null",
+        "lat": 46.949974,
+        "lon": 7.4430931,
+        "reviews": []
+    },
+    {
+        "name": "Essen",
+        "address": "Grosser Muristalden 1, 3006 Bern",
+        "rating": "4.6 (42)",
+        "lat": 46.9484721,
+        "lon": 7.4593615,
+        "reviews": [
+            {
+                "comment_rating": 2.0,
+                "comment_title": "Leider nicht wie gewohnt",
+                "comment_content": "Meine Gäste und ich assen am Samstag Ihren Tagesteller, dies nicht zuletzt auf Empfehlung des einen Gastes, der dieses Pot-au-feu vor einiger Zeit in der Brasserie gegessen hat und sehr begeistert davon war. Leider entsprach das Gericht in keiner Weise unseren Vorstellungen: das Fleisch war zäh, das Gemüse weitgehend roh, die Speisen lauwarm. Nach der Bouillon, die sehr gut schmeckte, warteten wir mindestens 30 Minuten auf den Hauptgang. Beim Abräumen des Geschirrs äusserten wir unsere Unzufriedenheit gegenüber dem Personal, worauf man uns    Dessert und Kaffee offerierte, was eine sehr nette Geste war, unsere Enttäuschung aber nicht aufwog. Ich hoffe, dass es sich um ein einmaliges Missgeschick handelt, denn bisher waren ich und meine Gäste mit Ihren Leistungen und dem Personal sehr zufrieden. Freundliche Grüsse Ursula Jaun",
+                "comment_date": "24.06.2024"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Une ambiance française dans un cadre suisse.",
+                "comment_content": "Très beau cadre dans un bâtiment historique. La terrasse est également fort agréable par beau temps. Très bonne cuisine française. Tables bien dressées. Personnel accueillant et efficace.",
+                "comment_date": "18.05.2024"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Wie immer, sehr gut und herzlich!",
+                "comment_content": "Ich und meine Gäste sind immer sehr zufrieden und finden die Menü-Karte ausgezeichnet!\r\n\r\nLG Peter Beck",
+                "comment_date": "17.05.2024"
+            },
+            {
+                "comment_rating": 4.0,
+                "comment_title": "Abstand zwischen den Tischen",
+                "comment_content": "Wenn ich 2 Wochen zum Voraus reserviere erwarte ich nicht einen Ecktisch im vorderen Teil des Restaurants mit Tischnachbarn die sozusagen am selben Tisch sitzen und deren Unterhaltung unüberhörbar ist",
+                "comment_date": "03.03.2023"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Grossartig",
+                "comment_content": "Wie vor 30 Jahren, mit dem jungen Chef, die tolle Dessertauswahl, nichts ändern, grosses Bravo!!!",
+                "comment_date": "01.03.2023"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Sonntag",
+                "comment_content": "Sehr freundliche Bedienung\nEmpfehlenswert\nSehr leckere Spezialitäten\nVor allem das Filet hat uns sehr gut gefallen\nAls Vorspeise hatte ich Niere, Hauptspeise Filet, und als Dessert die Leber😂😂",
+                "comment_date": "11.12.2022"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "",
+                "comment_content": "Wie immer: perfekt!",
+                "comment_date": "03.09.2022"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Sehr schöner Abend",
+                "comment_content": "Freundliche Bedingung ausgezeichnetes Essen in schönen Räumlichkeiten: was will man mehr.",
+                "comment_date": "19.02.2022"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Guter Service",
+                "comment_content": "Bedienung freundlich und aufmerksam \r\nEssen war hervorragend",
+                "comment_date": "09.12.2021"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Essen",
+                "comment_content": "Kalbskopf etwas sehr gemüselastig\r\nBouiabaisse und Miesmuscheln gut",
+                "comment_date": "03.11.2021"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Sehr gut",
+                "comment_content": "Danke Brasserie war einwandfrei, einzig die Covid-Abtrennungen helfen nicht zu Stimmung bei.",
+                "comment_date": "31.08.2021"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "einfach nur grossartig",
+                "comment_content": "Wunderschönes Restaurant, sehr nette Bedienung, Menü Karte mit grosser Auswahl einer meiner Lieblingsrestaurants in Bern.",
+                "comment_date": "09.08.2021"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Sensationelle Gastgeber",
+                "comment_content": "Sehr nette Bedienung. Breite Angebotspallette. Super Küche.\nAlle Sonderwünsche wurden erfüllt. Die Bedienung geduldig und verständnisvoll.\nImmer gerne wieder. Danke",
+                "comment_date": "29.07.2021"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Sehr gute Küche",
+                "comment_content": "Es stimmte einfach alles, vom freundlichen Service bis zum Essen.",
+                "comment_date": "18.06.2021"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "übertroffen",
+                "comment_content": "Super Service, wunderschönes Lokal, tolle Karte mit grosser Auswahl, wunderbares Essen",
+                "comment_date": "10.06.2021"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Französisch, Bernische Ambiance",
+                "comment_content": "super in Angebot und Bedienung. Reichhaltiges Weinangebot im Flaschen- und offenen Bereich. Wir schätzen, dass die Brasserie jeden Tag offen ist !",
+                "comment_date": "08.12.2020"
+            },
+            {
+                "comment_rating": 4.0,
+                "comment_title": "immer wieder gerne Brasserie Bärengraben",
+                "comment_content": "Haben sehr fein gespiesen! Sehr freundliche Atmosphäre. Das Essen war frisch, tadellos und schnell auf dem Tisch. Die Muscheln köstlich mit einer grossen Portion Pommes Alumettes. Die Rösti wie sie sein soll und die Leberli zart und fein gewürzt. Wir kommen bald wieder....Danke!",
+                "comment_date": "09.10.2020"
+            },
+            {
+                "comment_rating": 4.0,
+                "comment_title": "Brasserie mit französisch/schweizerischem Auftrit+ Angebot",
+                "comment_content": "konstant super in Qualität und bei ebenso freundlicher Bedienung. Wir schätzen die durchgehend offene Küche und dies besonders auch am Sonntag. Die Menü-Karte kommt originell daher und wird wöchentlich gewechselt. Die Spezialitäten des Hauses sind variantenreich und vorbehaltlos zu empfehlen. Dies gilt auch für das täglich neue Tages-Menü.",
+                "comment_date": "07.02.2020"
+            },
+            {
+                "comment_rating": 5.0,
+                "comment_title": "Bester Brasserie Food",
+                "comment_content": "Excellent",
+                "comment_date": "03.08.2018"
+            },
+            {
+                "comment_rating": 3.0,
+                "comment_title": "Essen",
+                "comment_content": "Preis-Leistung stimmt nicht. Muscheln so lala..",
+                "comment_date": "05.02.2018"
+            }
+        ]
+    }
+]
