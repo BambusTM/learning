@@ -1,10 +1,11 @@
+.env
 .DS_Store
 
+jsons/
 myenv/
 stuff/
-jsons/
 
-.env
-test.py
-*.json
 switzerland_map.html
+test.py
+
+*.json
