@@ -2,6 +2,7 @@
 
 myenv/
 stuff/
+jsons/
 
 .env
 test.py

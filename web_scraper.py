@@ -169,7 +169,7 @@ def write_json(item_list):
         }
         for item in item_list
     ]
-    with open('data.json', 'w', encoding='utf-8') as file:
+    with open('jsons/data.json', 'w', encoding='utf-8') as file:
         json.dump(formatted_list, file, indent=4, ensure_ascii=False)
 
 def main():
