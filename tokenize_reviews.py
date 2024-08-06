@@ -17,26 +17,42 @@ def read_json():
 
 def tokenize(data):
     tokenized_reviews = []
+    
     for item in data:
-        for review in item.get('reviews', []):
-            comment_title = review.get('comment_title', "")
-            comment_content = review.get('comment_content', "")
-
-            comment_title = remove_emojis(comment_title)
-            comment_content = remove_emojis(comment_content)
-
-            comment_title_tokens = word_tokenize(comment_title)
-            comment_content_tokens = word_tokenize(comment_content)
-
-            comment_title_tokens = remove_stop_words(comment_title_tokens)
-            comment_content_tokens = remove_stop_words(comment_content_tokens)
-
-            tokens = comment_title_tokens + comment_content_tokens
-            tokenized_reviews.append({
-                "comment_title": comment_title_tokens,
-                "comment_content": comment_content_tokens
-            })
+        restaurant_name = item.get('name', "")
+        restaurant_rating = item.get('rating', "")
+        
+        if item.get('reviews'):
+            restaurant_dict = {
+                "restaurant_name": restaurant_name,
+                "restaurant_rating": restaurant_rating,
+                "reviews": []
+            }
             
+            for review in item.get('reviews', []):
+                comment_rating = review.get('comment_rating', "")
+                comment_title = review.get('comment_title', "")
+                comment_content = review.get('comment_content', "")
+
+                comment_title = remove_emojis(comment_title)
+                comment_content = remove_emojis(comment_content)
+
+                comment_title_tokens = word_tokenize(comment_title)
+                comment_content_tokens = word_tokenize(comment_content)
+
+                comment_title_tokens = remove_stop_words(comment_title_tokens)
+                comment_content_tokens = remove_stop_words(comment_content_tokens)
+
+                tokens = comment_title_tokens + comment_content_tokens
+                review_dict = {
+                    "comment_rating": comment_rating,
+                    "comment_title": comment_title_tokens,
+                    "comment_content": comment_content_tokens
+                }
+                restaurant_dict["reviews"].append(review_dict)
+            
+            tokenized_reviews.append(restaurant_dict)
+        
     return tokenized_reviews
 
 def write_json(data, target):
@@ -101,8 +117,8 @@ def main():
     data = read_json()
     tokenized_reviews = tokenize(data)
     write_json(tokenized_reviews, 'jsons/review_tokens.json')
-    word_stem(tokenized_reviews)
-    word_lemma(tokenized_reviews)
+    #word_stem(tokenized_reviews)
+    #word_lemma(tokenized_reviews)
 
 if __name__ == "__main__":
     main()
