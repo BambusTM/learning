@@ -7,9 +7,6 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-geocoding_api_key = "12f03af7dc0948b9b5e21ac5306c0797"
-geocoding_api_base_url = "https://api.geoapify.com/v1/geocode/search?text="
-
 shape_file = gpd.read_file("ne_110m_populated_places/ne_110m_populated_places.shp")
 
 marker_data = []

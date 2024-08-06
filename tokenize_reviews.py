@@ -101,8 +101,8 @@ def main():
     data = read_json()
     tokenized_reviews = tokenize(data)
     write_json(tokenized_reviews, 'review_tokens.json')
-    #word_stem(tokenized_reviews)
-    #word_lemma(tokenized_reviews)
+    word_stem(tokenized_reviews)
+    word_lemma(tokenized_reviews)
 
 if __name__ == "__main__":
     main()
