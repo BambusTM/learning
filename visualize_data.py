@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-shape_file = gpd.read_file("ne_110m_populated_places/ne_110m_populated_places.shp")
+shape_file = gpd.read_file("helper/ne_110m_populated_places/ne_110m_populated_places.shp")
 
 marker_data = []
 locations = []
