@@ -1,22 +1,22 @@
-from nltk.stem import SnowballStemmer
-from nltk.stem import WordNetLemmatizer
 import json
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import string
 import emoji
+from nltk.stem import SnowballStemmer
+from nltk.stem import WordNetLemmatizer
 
 nltk.download('punkt')
 nltk.download('stopwords')
 
 def read_json():
-    with open('two_review_data_old.json') as file:
+    with open('data.json') as file:
         data = json.load(file)
     return data
 
 def tokenize(data):
-    token_list = []
+    tokenized_reviews = []
     for item in data:
         for review in item.get('reviews', []):
             comment_title = review.get('comment_title', "")
@@ -31,36 +31,19 @@ def tokenize(data):
             comment_title_tokens = remove_stop_words(comment_title_tokens)
             comment_content_tokens = remove_stop_words(comment_content_tokens)
 
-            for token in comment_title_tokens + comment_content_tokens:
-                token_list.append([token])
+            tokens = comment_title_tokens + comment_content_tokens
+            tokenized_reviews.append({
+                "comment_title": comment_title_tokens,
+                "comment_content": comment_content_tokens
+            })
+            
+    return tokenized_reviews
 
-    return token_list
+def write_json(data, target):
+    with open(target, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
 
-def word_stem(tokens):
-    stemmer = SnowballStemmer("german")
-    stemmed_list = []
-
-    for word_list in tokens:
-        if word_list:
-            word = word_list[0]
-            stemmed_word = stemmer.stem(word)
-            stemmed_list.append([word, stemmed_word])
-
-    write_json(stemmed_list, 'word_stem.json', "word", "stem")
-
-def word_lemma(tokens):
-    lemmatizer = WordNetLemmatizer()
-    lemmatized_list = []
-
-    for word_list in tokens:
-        if word_list:
-            word = word_list[0]
-            lemmatized_word = lemmatizer.lemmatize(word)
-            lemmatized_list.append([word, lemmatized_word])
-
-    write_json(lemmatized_list, 'word_lemma.json', "word", "lemma")
-
-def remove_stop_words(input):
+def remove_stop_words(tokens):
     stop_words_de = set(stopwords.words('german'))
     stop_words_fr = set(stopwords.words('french'))
     stop_words_en = set(stopwords.words('english'))
@@ -69,34 +52,57 @@ def remove_stop_words(input):
     dots = {'..', '...', '....', '.....', '......'}
     punctuation.update(dots)
     
-    filtered = [w for w in input if w.lower() not in stop_words and w not in punctuation]
-
+    filtered = [w for w in tokens if w.lower() not in stop_words and w not in punctuation]
     return filtered
 
-def remove_emojis(input):
-    allchars = [str for str in input]
+def remove_emojis(text):
+    allchars = [str for str in text]
     emoji_list = [c for c in allchars if c in emoji.EMOJI_DATA]
-    clean_text = ' '.join([str for str in input.split() if not any(i in str for i in emoji_list)])
-        
+    clean_text = ' '.join([str for str in text.split() if not any(i in str for i in emoji_list)])
     return clean_text
 
-def write_json(input, target, title1, title2):
-    formatted_list = [
-        {
-            title1: item[0],
-            title2: item[1]
-        }
-        for item in input if len(item) == 2
-    ]
-    with open(target, 'w', encoding='utf-8') as file:
-        json.dump(formatted_list, file, indent=4, ensure_ascii=False)
+def word_stem(data):
+    stemmer = SnowballStemmer("german")
+    stemmed_reviews = []
+
+    for review in data:
+        title_tokens = review["comment_title"]
+        content_tokens = review["comment_content"]
+        
+        stemmed_title = [stemmer.stem(word) for word in title_tokens]
+        stemmed_content = [stemmer.stem(word) for word in content_tokens]
+
+        stemmed_reviews.append({
+            "comment_title": stemmed_title,
+            "comment_content": stemmed_content
+        })
+
+    write_json(stemmed_reviews, 'word_stem.json')
+
+def word_lemma(data):
+    lemmatizer = WordNetLemmatizer()
+    lemmatized_reviews = []
+
+    for review in data:
+        title_tokens = review["comment_title"]
+        content_tokens = review["comment_content"]
+        
+        lemmatized_title = [lemmatizer.lemmatize(word) for word in title_tokens]
+        lemmatized_content = [lemmatizer.lemmatize(word) for word in content_tokens]
+
+        lemmatized_reviews.append({
+            "comment_title": lemmatized_title,
+            "comment_content": lemmatized_content
+        })
+
+    write_json(lemmatized_reviews, 'word_lemma.json')
 
 def main():
     data = read_json()
-    tokens = tokenize(data)
-    write_json(tokens, 'review_tokens.json', "token", "stem")
-    #word_stem(tokens)
-    word_lemma(tokens)
+    tokenized_reviews = tokenize(data)
+    write_json(tokenized_reviews, 'review_tokens.json')
+    #word_stem(tokenized_reviews)
+    #word_lemma(tokenized_reviews)
 
 if __name__ == "__main__":
     main()
