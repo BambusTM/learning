@@ -8,16 +8,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
 
-import torch
-import torchvision
-import torch.nn as nn
-from torchvision import datasets, models, transforms
-import os
-import numpy as np
-import matplotlib.pyplot as plt
-
-np.random.seed(69)
-
 def read_json():
     with open('jsons/review_tokens.json') as file:
         data = json.load(file)
@@ -51,6 +41,8 @@ def vectorize(data):
     df = pd.DataFrame(data, columns=['rating', 'comments'])
     df['comments'] = df['comments'].apply(lambda x: ' '.join(x))
 
+    df['rating'] = df['rating'].apply(lambda x: 1 if x > 3 else 0)
+
     vectorizer = TfidfVectorizer()
     X = vectorizer.fit_transform(df['comments'])
     y = df['rating']
@@ -61,6 +53,7 @@ def neural_network(X, y):
     model = LogisticRegression(random_state=42)
     model.fit(X, y)
     y_prediction = model.predict(X)
+
     print("Accuracy:", accuracy_score(y, y_prediction))
     print("Confusion Matrix:\n", confusion_matrix(y, y_prediction))
 
@@ -69,11 +62,7 @@ def main():
     training_data = extract_json(data)
     X, y = vectorize(training_data)
 
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    print("Using: ", device)
-
     neural_network(X, y)
-
 
 if __name__ == "__main__":
     main()
