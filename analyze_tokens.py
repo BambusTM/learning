@@ -19,6 +19,10 @@ def read_json():
         data = json.load(file)
     return data
 
+def write_json(data, target):
+    with open(target, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+
 def classify_review(rating):
     if rating:
         if math.isclose(rating, 3.5, abs_tol=0.00001) or rating > 3.5:
@@ -38,6 +42,7 @@ def count_words(word_list):
 def main():
     data = read_json()
     for item in data:
+        # don't need it rn
         restaurant_name = item.get('restaurant_name', "")
         restaurant_rating = item.get('restaurant_rating', "")
 
@@ -108,6 +113,8 @@ def main():
 
     print(f"Positive to Negative Ratio: {pos_to_neg:.2f}")
     print(f"Negative to Positive Ratio: {neg_to_pos:.2f}")
+
+    write_json(data, "jsons/analyzed_tokens.json")
 
 if __name__ == "__main__":
     main()
