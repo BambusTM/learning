@@ -65,8 +65,8 @@ def remove_stop_words(tokens):
     stop_words_en = set(stopwords.words('english'))
     stop_words = stop_words_de.union(stop_words_fr).union(stop_words_en)
     punctuation = set(string.punctuation)
-    dots = {'..', '...', '....', '.....', '......'}
-    punctuation.update(dots)
+    update = {'..', '...', '....', '.....', '......', "''", '"', '``'}
+    punctuation.update(update)
     
     filtered = [w for w in tokens if w.lower() not in stop_words and w not in punctuation]
     return filtered

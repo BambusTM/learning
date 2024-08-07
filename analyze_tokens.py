@@ -63,7 +63,7 @@ def main():
                 negative_word_occurence.update(title_word_count)
                 negative_word_occurence.update(content_word_count)
     
-    def top_words(counter, n = 25):
+    def top_words(counter, n = 20):
         if not isinstance(counter, Counter):
             counter = Counter(counter)
         return dict(counter.most_common(n))
@@ -95,10 +95,10 @@ def main():
     for word, count in top_neutral_words.items():
         data.append([word, count, 'Neutral'])
 
-    df = pd.DataFrame(data, columns=['Word', 'Count', 'Classification'])
+    df = pd.DataFrame(data, columns=['Word', 'Relative Occurence', 'Classification'])
 
     plt.figure(figsize=(12, 8))
-    sns.barplot(x='Word', y='Count', hue='Classification', data=df)
+    sns.barplot(x='Word', y='Relative Occurence', hue='Classification', data=df)
     plt.xticks(rotation=90)
     plt.title('Top Word Occurrences by Classification')
     plt.show()
