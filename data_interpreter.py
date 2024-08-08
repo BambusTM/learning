@@ -1,12 +1,10 @@
-import numpy as np
 import json
 from tqdm import tqdm
 
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 def read_json():
     with open('jsons/review_tokens.json') as file:
@@ -50,12 +48,13 @@ def vectorize(data):
     return X, y
 
 def neural_network(X, y):
-    model = LogisticRegression(random_state=42)
+    model = LogisticRegression(random_state = 42, class_weight='balanced')
     model.fit(X, y)
     y_prediction = model.predict(X)
 
     print("Accuracy:", accuracy_score(y, y_prediction))
     print("Confusion Matrix:\n", confusion_matrix(y, y_prediction))
+    print(classification_report(y, y_prediction, target_names=['Negative', 'Positive']))
 
 def main():
     data = read_json()
